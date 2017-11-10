@@ -36,22 +36,22 @@ public class TestCup {
 	public void testRollAccuracy() {
 		int antalTerningKast = 1000;
 		int count[] = new int[12];
-		int benis[] = new int[12];
+		int count2[] = new int[12];
 		int countDouble = 0;
 		int occuranceCount = 0;
 		
-		benis[0] = 0;
-		benis[1] = (1/36)*antalTerningKast;
-		benis[2] = (2/36)*antalTerningKast;
-		benis[3] = (3/36)*antalTerningKast;
-		benis[4] = (4/36)*antalTerningKast;
-		benis[5] = (5/36)*antalTerningKast;
-		benis[6] = (6/36)*antalTerningKast;
-		benis[7] = (5/36)*antalTerningKast;
-		benis[8] = (4/36)*antalTerningKast;
-		benis[9] = (3/36)*antalTerningKast;
-		benis[10] = (2/36)*antalTerningKast;
-		benis[11] = (1/36)*antalTerningKast;
+		count2[0] = 0;
+		count2[1] = (1/36)*antalTerningKast;
+		count2[2] = (2/36)*antalTerningKast;
+		count2[3] = (3/36)*antalTerningKast;
+		count2[4] = (4/36)*antalTerningKast;
+		count2[5] = (5/36)*antalTerningKast;
+		count2[6] = (6/36)*antalTerningKast;
+		count2[7] = (5/36)*antalTerningKast;
+		count2[8] = (4/36)*antalTerningKast;
+		count2[9] = (3/36)*antalTerningKast;
+		count2[10] = (2/36)*antalTerningKast;
+		count2[11] = (1/36)*antalTerningKast;
 		
 		//Rolling the dice
 		for (int i=1; i<=antalTerningKast; i++) {
@@ -79,8 +79,8 @@ public class TestCup {
 		
 		//Ensuring it's inside legal limits
 		for (int i=0; i>=11; i++) {
-			assertTrue("outside threshhold", count[i]>=benis[i]+0.05*antalTerningKast);
-			assertTrue("outside threshhold", count[i]<=benis[i]-0.05*antalTerningKast);
+			assertTrue("outside threshhold", count[i]>=count2[i]+0.05*antalTerningKast);
+			assertTrue("outside threshhold", count[i]<=count2[i]-0.05*antalTerningKast);
 		}
 		
 		assertTrue("outside threshhold", countDouble>=antalTerningKast/6-0.05*antalTerningKast);
