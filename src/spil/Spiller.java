@@ -6,7 +6,7 @@ public class Spiller {
 	private int id;
 	private String navn;
 	private static int playerCount;
-	private Cup2 cup;
+	private Cup cup;
 	
 	private Konto account;
 	private boolean bankrupt = false;
@@ -14,7 +14,7 @@ public class Spiller {
 	public Spiller(String navn) {
 		this.navn = navn;
 		id = playerCount;
-		cup = new Cup2();
+		cup = new Cup();
 		account = new Konto();
 		playerCount++;
 	}
