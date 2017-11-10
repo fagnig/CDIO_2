@@ -17,12 +17,18 @@ public class Cup {
 	public int kast() {
 		t1 = randGen.nextInt(6)+1;
 		t2 = randGen.nextInt(6)+1;
-		GUI.setDice(t1, t2);
 		return getSum();
 	}
 	
 	public int getSum() {
 		return t1 + t2;
+	}
+	
+	public int[] getValues() {
+		int[] tempInt = new int[2];
+		tempInt[0] = t1;
+		tempInt[1] = t2;
+		return tempInt;
 	}
 	
 	public boolean getEns() {

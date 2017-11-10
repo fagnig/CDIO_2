@@ -120,7 +120,8 @@ public class Controller {
 	private void updateGUI(int kast) {
 		GUI.removeAllCars(player[currentTurn].getNavn());
 		GUI.setCar(kast, player[currentTurn].getNavn());
-		
+		int faceValue[] = player[currentTurn].getValues();
+		GUI.setDice(faceValue[0], faceValue[1]);
 		GUI.setChanceCard(Language.fieldInfo(kast));
 		GUI.displayChanceCard();
 	}

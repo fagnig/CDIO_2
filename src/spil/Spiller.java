@@ -49,4 +49,7 @@ public class Spiller {
 		return navn;
 	}
 	
+	public int[] getValues() {
+		return cup.getValues();
+	}
 }
