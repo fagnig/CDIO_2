@@ -23,7 +23,7 @@ public class Spiller {
 		return playerCount;
 	}
 	
-	public int playTurn() {
+	public int kast() {
 		return cup.kast();
 	}
 	
