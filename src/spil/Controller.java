@@ -18,105 +18,112 @@ public class Controller {
 	
 	
 	public void go() {
-		
+		//GameLoop
 		while(true) {
 			
 			GUI.getUserButtonPressed(Language.newTurn(player[currentTurn].getNavn()), Language.newTurnConfirm());
 			
-			int kast = player[currentTurn].playTurn();
-			switch(kast) {
-			//Tower, +250
-			case 2:
-				player[currentTurn].addPoints(250);
-				
-				break;
-			
-			//Crater, -100
-			case 3:
-				player[currentTurn].addPoints(-100);
-				
-				break;
-				
-			//Palace gates, +100
-			case 4:
-				player[currentTurn].addPoints(100);
-				
-				break;
-			
-			//Cold desert, -20
-			case 5:
-				player[currentTurn].addPoints(-20);
-				
-				break;
-				
-			//Walled city, +180
-			case 6:
-				player[currentTurn].addPoints(180);
-				
-				break;
-				
-			//Monastery, +0
-			case 7:
-				
-				break;
-				
-			//Black cave, -70
-			case 8:
-				player[currentTurn].addPoints(-70);
-				
-				break;
-				
-			//Huts in the mountain, +60
-			case 9:
-				player[currentTurn].addPoints(60);
-				
-				break;
-				
-			//Werewall, -80 + ekstra tur
-			case 10:
-				player[currentTurn].addPoints(-80);
-				extraTurn = true;
-				break;
-				
-			//The pit, -50
-			case 11:
-				player[currentTurn].addPoints(-50);
-				break;
-			
-			//Goldmine, +650
-			case 12:
-				player[currentTurn].addPoints(650);
-				break;
-			}
+			int kast = player[currentTurn].kast();
+			resolveField(kast);
 			
 			//Hvis spilleren gik fallit, vinder den næste spiller 
 			if(player[currentTurn].getBankrupt()) {
 				playerWon(player[(currentTurn+1) % player.length].getNavn());
 				break;
 			}
+			//Check if player WON
 			if(player[currentTurn].getPoints()>=3000) {
 				playerWon(player[currentTurn].getNavn());
 				break;
 			}
 			
 
-			GUI.removeAllCars(player[currentTurn].getNavn());
-			GUI.setCar(kast, player[currentTurn].getNavn());
+			updateGUI(kast);
 			
-			
-			GUI.setChanceCard(Language.fieldInfo(kast));
-			GUI.displayChanceCard();
-			
-			
-			
-			
-			
-			
+			//Resolve extra turn
 			if(extraTurn)
 				extraTurn = false;
 			else
 				currentTurn = (currentTurn+1) % player.length;
 		}
+	}
+
+
+	private void resolveField(int kast) {
+		switch(kast) {
+		//Tower, +250
+		case 2:
+			player[currentTurn].addPoints(250);
+			
+			break;
+		
+		//Crater, -100
+		case 3:
+			player[currentTurn].addPoints(-100);
+			
+			break;
+			
+		//Palace gates, +100
+		case 4:
+			player[currentTurn].addPoints(100);
+			
+			break;
+		
+		//Cold desert, -20
+		case 5:
+			player[currentTurn].addPoints(-20);
+			
+			break;
+			
+		//Walled city, +180
+		case 6:
+			player[currentTurn].addPoints(180);
+			
+			break;
+			
+		//Monastery, +0
+		case 7:
+			
+			break;
+			
+		//Black cave, -70
+		case 8:
+			player[currentTurn].addPoints(-70);
+			
+			break;
+			
+		//Huts in the mountain, +60
+		case 9:
+			player[currentTurn].addPoints(60);
+			
+			break;
+			
+		//Werewall, -80 + ekstra tur
+		case 10:
+			player[currentTurn].addPoints(-80);
+			extraTurn = true;
+			break;
+			
+		//The pit, -50
+		case 11:
+			player[currentTurn].addPoints(-50);
+			break;
+		
+		//Goldmine, +650
+		case 12:
+			player[currentTurn].addPoints(650);
+			break;
+		}
+	}
+
+
+	private void updateGUI(int kast) {
+		GUI.removeAllCars(player[currentTurn].getNavn());
+		GUI.setCar(kast, player[currentTurn].getNavn());
+		
+		
+		GUI.setChanceCard(Language.fieldInfo(kast));
+		GUI.displayChanceCard();
 	}
 
 	
