@@ -121,7 +121,6 @@ public class Controller {
 		GUI.removeAllCars(player[currentTurn].getNavn());
 		GUI.setCar(kast, player[currentTurn].getNavn());
 		
-		
 		GUI.setChanceCard(Language.fieldInfo(kast));
 		GUI.displayChanceCard();
 	}
